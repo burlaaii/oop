@@ -1,0 +1,116 @@
+class Shop(): 
+    def __init__(self, shop_name,store_type): 
+        self.shop_name=shop_name 
+        self.store_type=store_type 
+        self.number_of_units=0 
+    def describe_shop(self): 
+        print(f"Назва магазину- {self.shop_name}") 
+        print(f"Тип магазину- {self.store_type}") 
+    def open_shop(self): 
+        print( f"{self.shop_name} відкритий") 
+    def set_number_of_units(self,num): 
+        self.number_of_units=num 
+    def increment_number_of_units(self,num): 
+        self.number_of_units+=num 
+ 
+shop=Shop('Mars','clothes') 
+shop2=Shop('Nike','shoes') 
+shop3=Shop('Adidas','clothes and shoes') 
+ 
+print('Завдання a') 
+shop.open_shop() 
+shop.describe_shop() 
+ 
+print('Завдання b') 
+shop.describe_shop() 
+shop2.describe_shop() 
+shop3.describe_shop() 
+ 
+print('Завдання c') 
+store=Shop('Niva','food') 
+print(store.number_of_units) 
+store.number_of_units=5 
+print(store.number_of_units) 
+ 
+print('Завдання d') 
+print(store.number_of_units) 
+shop.set_number_of_units(5) 
+print(shop.number_of_units) 
+shop.increment_number_of_units(10) 
+print(shop.number_of_units) 
+ 
+print('Завдання e') 
+class Discount(Shop): 
+    def __init__(self, shop_name,store_type,discount_products): 
+        super().__init__(shop_name,store_type) 
+        self.discount_products=discount_products 
+    def get_discounts_ptoducts(self): 
+        print(f'Продукти зі знишкою: {self.discount_products}') 
+    def describe_shop(self): 
+        super().describe_shop() 
+        print(f'Продукти зі знишкою: {self.discount_products}') 
+ 
+store_discount=Discount('ava','food','milk,apple,bread') 
+store_discount.get_discounts_ptoducts()
+
+from Shop_all_ex import Shop 
+print('Завдання F і Фінальний результат') 
+all_store=Shop('Сільпо','їжа') 
+all_store.describe_shop()
+
+class User(): 
+    def __init__(self, first_name, last_name, age, country): 
+        self.first_name=first_name 
+        self.last_name=last_name 
+        self.age=age 
+        self.country=country 
+        self.login_attempts=0 
+    def describe_user(self): 
+        print(self.first_name,self.last_name) 
+    def greeting_user(self): 
+        print('Вітаю вас',self.first_name,self.last_name,self.age,self.country) 
+    def increment_login_attempts(self): 
+        self.login_attempts += 1 
+    def reset_login_attempts(self): 
+        self.login_attempts=0 
+ 
+ 
+user=User('Vika','Burlai',18,'Ukraine') 
+user2=User('Yana','Iluk',17,'Ukraine') 
+user3=User('Sofiya','Pasichniak',17,'Ukraine') 
+print('Завдання a') 
+user.describe_user() 
+user.greeting_user() 
+ 
+user2.describe_user() 
+user2.greeting_user() 
+ 
+user3.describe_user() 
+user3.greeting_user() 
+print('Завдання b') 
+user.increment_login_attempts() 
+user.increment_login_attempts() 
+print('Кількість:',user.login_attempts) 
+user.reset_login_attempts() 
+print('Рахунок обнульвся:',user.login_attempts)
+
+from User import User 
+class Privileges: 
+    def __init__(self, privileges): 
+        self.privileges = privileges 
+    def show_privileges(self): 
+        print('Привілеїв адміністратора') 
+        for privilege in self.privileges: 
+            print(f"- {privilege}") 
+ 
+class Admin(User): 
+    def __init__(self,first_name, last_name, age, country): 
+        super().__init__(first_name,last_name,age,country) 
+        self.privilege=Privileges(['Allowed to add message','Allowed to delete users','Allowed to ban users']) 
+print('Завдання d') 
+admin = Admin('Yana','Iluk',17,'Ukraine') 
+admin.privilege.show_privileges()
+
+from User2 import Admin 
+admin= Admin('Sofiya','Pasichniak',17,'Ukraine') 
+admin.privilege.show_privileges()
